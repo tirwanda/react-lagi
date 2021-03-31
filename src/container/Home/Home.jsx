@@ -1,5 +1,6 @@
 import React from 'react';
 import YoutubeComp from '../../component/YoutubeComp/YoutubeComponent';
+import Product from '../Product/Product';
 
 class Home extends React.Component {
 	render() {
@@ -12,6 +13,9 @@ class Home extends React.Component {
 				<YoutubeComp time="8.12" title="Turorial PLC" />
 				<YoutubeComp time="2.24" title="Tutorial ATmega" />
 				<YoutubeComp />
+				<p>Counter</p>
+				<hr />
+				<Product />
 			</div>
 		);
 	}

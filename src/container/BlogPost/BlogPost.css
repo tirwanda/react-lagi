@@ -48,3 +48,67 @@
 	color: #3d4a6e;
 	margin-bottom: 16px;
 }
+
+.remove {
+	padding: 12px 18px;
+	background: salmon;
+	color: white;
+	font-size: bold;
+	border-radius: 7px;
+	outline: none;
+	margin-top: 18px;
+}
+
+.remove:hover {
+	cursor: pointer;
+}
+
+.form-add-post {
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+	width: 500px;
+	margin-left: 20px;
+	padding: 10px;
+	margin-bottom: 50px;
+	border-radius: 7px;
+}
+
+.form-add-post label {
+	display: block;
+	font-size: 14px;
+	color: #607d8b;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.form-add-post input,
+.form-add-post textarea {
+	outline: none;
+	border: 1px solid #607d8b;
+	padding: 12px;
+	border-radius: 7px;
+	margin-bottom: 20px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 12px;
+	color: #607d8b;
+}
+
+.btn-submit {
+	outline: none;
+	border: 1px solid #2196f3;
+	padding: 10px 30px;
+	border-radius: 7px;
+	color: #2196f3;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 30px;
+	background: white;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+	color: white;
+	background: #2196f3;
+	border: 1px solid #607d8b;
+}

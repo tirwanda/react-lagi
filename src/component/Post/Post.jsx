@@ -15,6 +15,12 @@ const Post = (props) => {
 				>
 					Remove
 				</button>
+				<button
+					className="update"
+					onClick={() => props.update(props.data)}
+				>
+					Update
+				</button>
 			</div>
 		</div>
 	);

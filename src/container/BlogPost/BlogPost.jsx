@@ -11,6 +11,7 @@ class BlogPost extends React.Component {
 			title: '',
 			body: '',
 		},
+		isUpdate: false,
 	};
 
 	getPostApi = () => {
@@ -28,8 +29,14 @@ class BlogPost extends React.Component {
 		axios
 			.post('http://localhost:3004/posts', this.state.blogPost)
 			.then((res) => {
-				console.log(res);
 				this.getPostApi();
+				this.setState({
+					blogPost: {
+						id: 1,
+						title: '',
+						body: '',
+					},
+				});
 			})
 			.catch((err) => console.log(err));
 	};
@@ -40,11 +47,36 @@ class BlogPost extends React.Component {
 			.then((res) => this.getPostApi());
 	};
 
+	handleUpdate = (data) => {
+		this.setState({
+			blogPost: data,
+			isUpdate: true,
+		});
+	};
+
+	putDataToApi = (data) => {
+		axios
+			.put(`http://localhost:3004/posts/${data}`, this.state.blogPost)
+			.then((res) => {
+				this.getPostApi();
+				this.setState({
+					isUpdate: false,
+					blogPost: {
+						id: 1,
+						title: '',
+						body: '',
+					},
+				});
+			});
+	};
+
 	handleFormChange = (event) => {
 		let newBlogPost = { ...this.state.blogPost };
 		let timeStamp = new Date().getTime();
 		newBlogPost[event.target.name] = event.target.value;
-		newBlogPost['id'] = timeStamp;
+		if (!this.state.isUpdate) {
+			newBlogPost['id'] = timeStamp;
+		}
 
 		this.setState({
 			blogPost: newBlogPost,
@@ -52,7 +84,11 @@ class BlogPost extends React.Component {
 	};
 
 	handleSubmit = () => {
-		this.postDataToApi();
+		if (this.state.isUpdate) {
+			this.putDataToApi(this.state.blogPost.id);
+		} else {
+			this.postDataToApi();
+		}
 	};
 
 	componentDidMount() {
@@ -76,6 +112,7 @@ class BlogPost extends React.Component {
 					<label htmlFor="title">Title</label>
 					<input
 						type="text"
+						value={this.state.blogPost.title}
 						name="title"
 						onChange={this.handleFormChange}
 						placeholder="Add Title Here"
@@ -83,6 +120,7 @@ class BlogPost extends React.Component {
 					<label htmlFor="body">Description</label>
 					<textarea
 						type="text"
+						value={this.state.blogPost.body}
 						name="body"
 						onChange={this.handleFormChange}
 						id="body"
@@ -97,6 +135,7 @@ class BlogPost extends React.Component {
 						<Post
 							data={post}
 							remove={this.handleRemove}
+							update={this.handleUpdate}
 							key={post.id}
 						/>
 					);

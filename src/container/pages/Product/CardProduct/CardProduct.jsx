@@ -1,5 +1,5 @@
 import React from 'react';
-import ThumbNail from '../../assets/image/thumb-nail.jpg';
+import ThumbNail from '../../../../assets/image/thumb-nail.jpg';
 
 class CardProduct extends React.Component {
 	state = {

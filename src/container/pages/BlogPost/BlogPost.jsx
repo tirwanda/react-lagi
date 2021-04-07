@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
-import Post from '../../component/Post/Post';
+import Post from '../../../component/Post/Post';
 import './BlogPost.css';
 
 class BlogPost extends React.Component {
@@ -91,6 +91,10 @@ class BlogPost extends React.Component {
 		}
 	};
 
+	handleDetail = (id) => {
+		this.props.history.push(`/detail-post/${id}`);
+	};
+
 	componentDidMount() {
 		/****************************** 
 		fetch('https://jsonplaceholder.typicode.com/posts')
@@ -138,6 +142,7 @@ class BlogPost extends React.Component {
 							data={post}
 							remove={this.handleRemove}
 							update={this.handleUpdate}
+							toDetail={this.handleDetail}
 							key={post.id}
 						/>
 					);

@@ -6,14 +6,14 @@
 	background: lightgray;
 }
 
-.img-thumb {
+.img-thumb-yt {
 	width: 100%;
 	height: 118px;
 	overflow: hidden;
 	position: relative;
 }
 
-.img-thumb img {
+.img-thumb-yt img {
 	width: 100%;
 }
 

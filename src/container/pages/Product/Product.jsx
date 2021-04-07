@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import Troli from '../../assets/image/troli.png';
-import Logo from '../../assets/image/logo.png';
-import CardProduct from '../CardProduct/CardProduct';
+import Troli from '../../../assets/image/troli.png';
+import Logo from '../../../assets/image/logo.png';
+import CardProduct from './CardProduct/CardProduct';
 
 import './Product.css';
 

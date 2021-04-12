@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './DetailPost.css';
 
 class DetailPost extends Component {

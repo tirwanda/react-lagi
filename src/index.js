@@ -3,11 +3,43 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './container/Home/Home';
+import { Provider } from 'react-redux';
+
+const redux = require('redux');
+
+const createStore = redux.createStore;
+
+const initialState = {
+	totalOrder: 0,
+};
+
+// Reducer
+const rootReducer = (state = initialState, action) => {
+	if (action.type === 'PLUS_ORDER') {
+		return {
+			...state,
+			totalOrder: state.totalOrder + 1,
+		};
+	}
+
+	if (action.type === 'MINUS_ORDER') {
+		if (state.totalOrder > 0) {
+			return {
+				...state,
+				totalOrder: state.totalOrder - 1,
+			};
+		}
+	}
+	return state;
+};
+
+// Store
+const store = createStore(rootReducer);
 
 ReactDOM.render(
-	<React.StrictMode>
+	<Provider store={store}>
 		<Home />
-	</React.StrictMode>,
+	</Provider>,
 	document.getElementById('root')
 );
 

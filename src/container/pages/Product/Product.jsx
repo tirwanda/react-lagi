@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import Troli from '../../../assets/image/troli.png';
 import Logo from '../../../assets/image/logo.png';
@@ -7,16 +8,6 @@ import CardProduct from './CardProduct/CardProduct';
 import './Product.css';
 
 class Product extends Component {
-	state = {
-		order: 0,
-	};
-
-	handleCounterChange = (newValue) => {
-		this.setState({
-			order: newValue,
-		});
-	};
-
 	render() {
 		return (
 			<Fragment>
@@ -28,15 +19,18 @@ class Product extends Component {
 					</div>
 					<div className="troley">
 						<img src={Troli} alt="" />
-						<div className="count">{this.state.order}</div>
+						<div className="count">{this.props.order}</div>
 					</div>
 				</div>
-				<CardProduct
-					onCounterChange={(value) => this.handleCounterChange(value)}
-				/>
+				<CardProduct />
 			</Fragment>
 		);
 	}
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+	return {
+		order: state.totalOrder,
+	};
+};
+export default connect(mapStateToProps)(Product);

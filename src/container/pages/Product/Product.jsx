@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import Troli from '../../../assets/image/troli.png';
 import Logo from '../../../assets/image/logo.png';
@@ -19,7 +19,7 @@ class Product extends Component {
 					</div>
 					<div className="troley">
 						<img src={Troli} alt="" />
-						<div className="count">{this.props.order}</div>
+						<div className="count">{0}</div>
 					</div>
 				</div>
 				<CardProduct />
@@ -28,9 +28,13 @@ class Product extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		order: state.totalOrder,
-	};
-};
-export default connect(mapStateToProps)(Product);
+// Using Redux
+// const mapStateToProps = (state) => {
+// 	return {
+// 		order: state.totalOrder,
+// 	};
+// };
+
+// export default connect(mapStateToProps)(Product);
+
+export default Product;

@@ -13,13 +13,32 @@ const Provider = RootContext.Provider;
 
 class Home extends Component {
 	state = {
-		totalOrder: 0,
+		totalOrder: 5,
+	};
+
+	dispatch = (action) => {
+		if (action.type === 'PLUS_ORDER') {
+			return this.setState({
+				totalOrder: this.state.totalOrder + 1,
+			});
+		}
+
+		if (action.type === 'MINUS_ORDER') {
+			return this.setState({
+				totalOrder: this.state.totalOrder - 1,
+			});
+		}
 	};
 
 	render() {
 		return (
 			<Router>
-				<Provider value={this.state}>
+				<Provider
+					value={{
+						state: this.state,
+						dispatch: this.dispatch,
+					}}
+				>
 					<Fragment>
 						<div className="navigation">
 							<Link to="/">Blog Post</Link>

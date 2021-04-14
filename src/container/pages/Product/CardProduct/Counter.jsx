@@ -48,11 +48,21 @@ class Counter extends Component {
 					console.log('Value: ', value);
 					return (
 						<div className="counter">
-							<button className="plus" onClick={() => null}>
+							<button
+								className="plus"
+								onClick={() =>
+									value.dispatch({ type: 'PLUS_ORDER' })
+								}
+							>
 								+
 							</button>
-							<input type="text" value={value.totalOrder} />
-							<button className="minus" onClick={() => null}>
+							<input type="text" value={value.state.totalOrder} />
+							<button
+								className="minus"
+								onClick={() =>
+									value.dispatch({ type: 'MINUS_ORDER' })
+								}
+							>
 								-
 							</button>
 						</div>

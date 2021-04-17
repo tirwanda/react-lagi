@@ -40,6 +40,18 @@ class BlogPost extends React.Component {
 	};
 
 	postDataToApi = () => {
+		API.postNewsBlog(this.state.blogPost).then((res) => {
+			this.getPostApi();
+			this.setState({
+				blogPost: {
+					id: 1,
+					title: '',
+					body: '',
+				},
+			});
+		});
+
+		/*
 		axios
 			.post('http://localhost:3004/posts', this.state.blogPost)
 			.then((res) => {
@@ -53,6 +65,7 @@ class BlogPost extends React.Component {
 				});
 			})
 			.catch((err) => console.log(err));
+		 */
 	};
 
 	handleRemove = (data) => {
@@ -150,13 +163,13 @@ class BlogPost extends React.Component {
 						Save
 					</button>
 				</div>
-				{this.state.comments.map((comment) => {
+				{/* {this.state.comments.map((comment) => {
 					return (
 						<p>
 							{comment.name} - {comment.email}
 						</p>
 					);
-				})}
+				})} */}
 				{this.state.post.map((post) => {
 					return (
 						<Post
